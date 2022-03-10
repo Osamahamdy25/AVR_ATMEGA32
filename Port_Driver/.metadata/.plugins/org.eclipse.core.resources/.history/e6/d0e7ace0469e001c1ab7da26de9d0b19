@@ -1,0 +1,57 @@
+/******************************************************************************
+ *
+ * Module: Port Driver
+ *
+ * File Name: port_cfg.h
+ *
+ * Description: Header file for the AVR Port Driver Configuration
+ *
+ * Author: Osama Hamdy
+ *
+ *******************************************************************************/
+
+#ifndef PORT_CFG_H_
+#define PORT_CFG_H_
+
+/*******************************************************************************
+ *                               PIN Initialzation                              *
+ *******************************************************************************/
+
+ /******************** PINS OF PORTA ***************************************/
+#define PORTA_PIN0_MODE    				DEFAULT
+#define PORTA_PIN1_MODE
+#define PORTA_PIN2_MODE
+#define PORTA_PIN3_MODE
+#define PORTA_PIN4_MODE
+#define PORTA_PIN5_MODE
+#define PORTA_PIN6_MODE
+#define PORTA_PIN7_MODE
+ /******************** PINS OF PORTB ***************************************/
+#define PORTB_PIN0_MODE
+#define PORTB_PIN1_MODE
+#define PORTB_PIN2_MODE
+#define PORTB_PIN3_MODE
+#define PORTB_PIN4_MODE
+#define PORTB_PIN5_MODE
+#define PORTB_PIN6_MODE
+#define PORTB_PIN7_MODE
+ /******************** PINS OF PORTC ***************************************/
+#define PORTC_PIN0_MODE
+#define PORTC_PIN1_MODE
+#define PORTC_PIN2_MODE
+#define PORTC_PIN3_MODE
+#define PORTC_PIN4_MODE
+#define PORTC_PIN5_MODE
+#define PORTC_PIN6_MODE
+#define PORTC_PIN7_MODE
+ /******************** PINS OF PORTD ***************************************/
+#define PORTD_PIN0_MODE
+#define PORTD_PIN1_MODE
+#define PORTD_PIN2_MODE
+#define PORTD_PIN3_MODE
+#define PORTD_PIN4_MODE
+#define PORTD_PIN5_MODE
+#define PORTD_PIN6_MODE
+#define PORTD_PIN7_MODE
+
+#endif /* PORT_CFG_H_ */

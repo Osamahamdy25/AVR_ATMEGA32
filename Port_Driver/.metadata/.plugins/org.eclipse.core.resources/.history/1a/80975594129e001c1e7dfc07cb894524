@@ -1,0 +1,67 @@
+/******************************************************************************
+ *
+ * Module: Port Driver
+ *
+ * File Name: port.c
+ *
+ * Description: Source  file for the AVR Port Driver
+ *
+ * Author: Osama Hamdy
+ *
+ *******************************************************************************/
+
+#include "port.h"
+#include "Bit_utils.h"                     /* To use the macros like SET_BIT */
+#include "avr/io.h"                        /* To use the IO Ports Registers */
+
+/*******************************************************************************
+ *                              Functions Defintions                         *
+ *******************************************************************************/
+
+/*
+ * Description :
+ * Setup the direction of the required pin input/output.
+ * If the input port number or pin number are not correct, The function will not handle the request and will return Error .
+ * Function Paramters : Pin Number & Pin Direction
+ * Function Return : Error Status of Port
+ */
+Port_tenuErrorState Port_enuSetpinDirection(u8 Copy_u8PinNum,u8 Copy_u8PinDirection)
+{
+
+
+	Port_tenuErrorState LOC_enuReturnStatus;
+
+	if(Copy_u8PinNum > MAX_PINS_NUM)
+	{
+		LOC_enuReturnStatus = Port_enuOk;;
+	}
+	else if(Copy_u8PinDirection > PORT_OUTPUT_HIGH)
+	{
+			LOC_enuReturnStatus =Port_enuDirectionError ;
+	}
+
+
+}
+
+
+
+/*
+ * Description :
+ * Setup the Mode of the required pin Pull_Up/High_Impedence.
+ * If the input port number or pin number are not correct, The function will not handle the request and will return Error .
+ * Function Paramters : Pin Number & Pin Mode
+ * Function Return : Error Status of Port
+ */
+Port_tenuErrorState Port_enuSetpinMode(u8 Copy_u8PinNum,u8 Copy_u8PinMode)
+{
+
+
+
+
+
+
+
+}
+
+
+

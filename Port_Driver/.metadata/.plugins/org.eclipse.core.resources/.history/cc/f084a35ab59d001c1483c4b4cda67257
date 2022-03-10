@@ -1,0 +1,15 @@
+/******************************************************************************
+ *
+ * Module: Port Driver
+ *
+ * File Name: port.c
+ *
+ * Description: Source  file for the AVR Port Driver
+ *
+ * Author: Osama Hamdy
+ *
+ *******************************************************************************/
+
+#include "port.h"
+#include "Bit_utils.h"                     /* To use the macros like SET_BIT */
+#include "avr/io.h" /* To use the IO Ports Registers */

@@ -1,0 +1,84 @@
+/*
+ * main.c
+ *
+ *  Created on: Mar 3, 2022
+ *      Author: Osama Mohamed Hamdy
+ */
+
+#include <avr/io.h>
+#include <util/delay.h>
+#define  SET_BIT(REG,BIT) 	REG|=1<<BIT
+#define  CLR_BIT(REG,BIT) 	REG&=~(1<<BIT)
+#define  GIT_BIT(REG,BIT)	((REG>>BIT)&(1))
+
+
+int main(void)
+{
+	unsigned char i,flag=0;
+	DDRA=0XFF; // all pins of port A are output
+	CLR_BIT(DDRB,0);// pin 0 are input
+	CLR_BIT(DDRB,1);// pin 1 are input
+	CLR_BIT(DDRB,2);// pin 2 are input
+	SET_BIT(DDRB,3);// pin 3 are output
+	PORTA=0X00; 	//turn off all leds
+	SET_BIT(PORTB,0); // for internal pull up
+	SET_BIT(PORTB,1); // for internal pull up
+	SET_BIT(PORTB,2); // for internal pull up
+	while(1)
+	{
+		if(GIT_BIT(PINB,0)==0)
+		{
+			_delay_ms(30);
+			if(GIT_BIT(PINB,0)==0)
+					{
+			while(flag==0)
+			{
+				PORTA=i;
+				_delay_ms(500);
+				PORTA=0;
+				if(GIT_BIT(PINB,1)==0)
+				{
+					_delay_ms(30);
+					i++;
+
+				}
+				else if(GIT_BIT(PINB,2)==0)
+				{
+					_delay_ms(30);
+					i--;
+				}
+				else if (GIT_BIT(PINB,0)==0)
+				{
+					flag=1;
+					while(flag=1)
+					{
+						PORTA=0;
+						i=0;
+						if (GIT_BIT(PINB,0)==0)
+						{
+							_delay_ms(30);
+							flag=0;
+						}
+					}
+
+				}
+				if(i>7||i<0)
+						{
+							i=0;
+							SET_BIT(PORTB,3);
+							_delay_ms(500);
+							CLR_BIT(PORTB,3);
+						}
+
+
+		}
+					}
+			}
+
+	}
+
+
+
+
+	return 0;
+}

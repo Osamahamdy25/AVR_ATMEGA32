@@ -1,0 +1,17 @@
+/******************************************************************************
+ *
+ * Module: Port Driver
+ *
+ * File Name: port_prv.h
+ *
+ * Description: Header file for the AVR Port Driver
+ *
+ * Author: Osama Hamdy
+ *
+ *******************************************************************************/
+#ifndef PORT_PRV_H_
+#define PORT_PRV_H_
+/**************************  PIN_NUMBERS ***************************************/
+#define MAX_PINS_NUM 				31
+
+#endif /* PORT_PRV_H_ */

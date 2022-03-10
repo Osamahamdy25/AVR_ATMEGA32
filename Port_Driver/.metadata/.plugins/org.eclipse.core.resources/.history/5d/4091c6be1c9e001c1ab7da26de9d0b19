@@ -1,0 +1,196 @@
+/******************************************************************************
+ *
+ * Module: Port Driver
+ *
+ * File Name: port.c
+ *
+ * Description: Source  file for the AVR Port Driver
+ *
+ * Author: Osama Hamdy
+ *
+ *******************************************************************************/
+
+#include "port.h"
+#include "Bit_utils.h"                     /* To use the macros like SET_BIT */
+#include "avr/io.h"                        /* To use the IO Ports Registers */
+
+/*******************************************************************************
+ *                              Functions Defintions                         *
+ *******************************************************************************/
+
+/*
+ * Description :
+ * Setup the direction of the required pin input/output.
+ * If the input port number or pin number are not correct, The function will not handle the request and will return Error .
+ * Function Paramters : Pin Number & Pin Direction
+ * Function Return : Error Status of Port
+ */
+Port_tenuErrorState Port_enuSetpinDirection(u8 Copy_u8PinNum,u8 Copy_u8PinDirection)
+{
+
+	/* Intialize variabla to save the number of pin */
+	u8 LOC_u8PinNum = 0;
+	/* Intialize variable to save the number of ports */
+	u8 LOC_u8PortNum = 0;
+	/* Intialize Variable to return the port status */
+	Port_tenuErrorState LOC_enuReturnStatus=Port_enuOk;;
+
+	if(Copy_u8PinNum > MAX_PINS_NUM)
+	{
+		LOC_enuReturnStatus = Port_enuPinError;
+	}
+	else if(Copy_u8PinDirection > PORT_OUTPUT_HIGH)
+	{
+			LOC_enuReturnStatus =Port_enuDirectionError ;
+	}
+	else
+	{
+		LOC_u8PinNum  = Copy_u8PinNum%8;
+		LOC_u8PortNum = Copy_u8PinNum/8;
+		switch (LOC_u8PortNum)
+		{
+		case PORTA_ID:
+			if(Copy_u8PinDirection==PORT_OUTPUT_HIGH)
+			{
+				SET_BIT(DDRA,Copy_u8PinNum);
+			}
+			else {
+				CLR_BIT(DDRA,Copy_u8PinNum);
+			}
+			break;
+
+		case PORTB_ID:
+
+			if(Copy_u8PinDirection==PORT_OUTPUT_HIGH)
+			{
+				SET_BIT(DDRB,Copy_u8PinNum);
+			}
+			else {
+
+				CLR_BIT(DDRB,Copy_u8PinNum);
+
+			}
+			break;
+		case PORTD_ID:
+
+				if(Copy_u8PinDirection==PORT_OUTPUT_HIGH)
+				{
+					SET_BIT(DDRD,Copy_u8PinNum);
+				}
+				else {
+
+					CLR_BIT(DDRD,Copy_u8PinNum);
+
+				}
+				break;
+		case PORTC_ID:
+
+						if(Copy_u8PinDirection==PORT_OUTPUT_HIGH)
+						{
+							SET_BIT(DDRC,Copy_u8PinNum);
+						}
+						else {
+
+							CLR_BIT(DDRC,Copy_u8PinNum);
+
+						}
+						break;
+
+	}
+
+	return LOC_enuReturnStatus;
+
+
+}
+
+
+
+/*
+ * Description :
+ * Setup the Mode of the required pin Pull_Up/High_Impedence.
+ * If the input port number or pin number are not correct, The function will not handle the request and will return Error .
+ * Function Paramters : Pin Number & Pin Mode
+ * Function Return : Error Status of Port
+ */
+Port_tenuErrorState Port_enuSetpinMode(u8 Copy_u8PinNum,u8 Copy_u8PinMode)
+{
+
+	/* Intialize variabla to save the number of pin */
+	u8 LOC_u8PinNum = 0;
+	/* Intialize variable to save the number of ports */
+	u8 LOC_u8PortNum = 0;
+	/* Intialize Variable to return the port status */
+	Port_tenuErrorState LOC_enuReturnStatus;
+
+	if(Copy_u8PinNum > MAX_PINS_NUM)
+	{
+		LOC_enuReturnStatus = Port_enuOk;;
+	}
+	else if(Copy_u8PinMode > PIN_)
+	{
+			LOC_enuReturnStatus =Port_enuDirectionError ;
+	}
+	else
+	{
+		LOC_u8PinNum  = Copy_u8PinNum%8;
+		LOC_u8PortNum = Copy_u8PinNum/8;
+		switch (LOC_u8PortNum)
+		{
+		case PORTA_ID:
+			if(Copy_u8PinMode==PIN_PULL_UP)
+			{
+				SET_BIT(PORTA,Copy_u8PinNum);
+			}
+			else {
+				CLR_BIT(PORTA,Copy_u8PinNum);
+			}
+			break;
+		case PORTB_ID:
+			if(Copy_u8PinMode==PIN_PULL_UP)
+			{
+				SET_BIT(PORTB,Copy_u8PinNum);
+			}
+			else {
+				CLR_BIT(PORTB,Copy_u8PinNum);
+				}
+					break;
+
+		case PORTD_ID:
+
+						if(Copy_u8PinDirection==PORT_OUTPUT_HIGH)
+						{
+							SET_BIT(PORTD,Copy_u8PinNum);
+						}
+						else {
+
+							CLR_BIT(PORTD,Copy_u8PinNum);
+
+						}
+						break;
+		case PORTC_ID:
+
+							if(Copy_u8PinDirection==PORT_OUTPUT_HIGH)
+							{
+								SET_BIT(PORTC,Copy_u8PinNum);
+							}
+							else {
+
+								CLR_BIT(PORTC,Copy_u8PinNum);
+
+							}
+							break;
+
+		}
+
+
+
+	}
+
+
+	return LOC_enuReturnStatus;
+
+
+
+
+
+
